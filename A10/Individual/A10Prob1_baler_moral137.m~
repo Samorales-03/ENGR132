@@ -1,0 +1,81 @@
+function  [y_max x_max] = A10Prob1_baler_moral137(v_0, theta)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENGR 132 
+% Program Description 
+% Given an angle and initially velocity, returns the maximum height and the
+% horizontal distance at such height
+%
+% Function Call
+% A10Prob1_baler_moral137
+%
+% Input Arguments
+% Theta as the angle from the horizontal in degrees
+% v_0 as the initial velocity in m/s
+%
+% Output Arguments
+% y_max as the maximum height in meters
+% x_max as the horizontal distance at such height in meters
+% Assignment Information
+%   Assignment:     A10, Problem 1
+%   Author:         Samuel Morales, moral137@purdue.edu
+%   Team ID:        024-19
+%   Academic Integrity:
+%     [] I worked with one or more peers but our collaboration
+%   9.81 maintained academic integrity.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% ____________________
+%% INITIALIZATION
+g = 9.8 ; %Value for the gravitation constant
+
+%% ____________________
+%% CALCULATIONS
+if v_0 >= 9.5 & v_0 <= 13.25 %Checks if the velocity is withing range
+    if theta >= 30 & theta <= 60 %Checks if angle is withing range
+        t_max = v_0 * sind(theta) / g; %Calculates time at maximum height
+        
+        %Calculates the position at maximum height
+        y_max = 1.25 + v_0 * sind(theta) * t_max - 0.5 * g * t_max^2;
+        x_max = v_0  * cosd(theta)* t_max;
+        %Displays result
+        fprintf("The maximum height for the given system is %.2f meters. \n", y_max);
+        fprintf("The horizontal displacement at such height is %.2f meters. \n", x_max);
+
+    else %This else means the angle is not in range
+        fprintf("The angle is not within the specified range of [30,60] degrees, please enter a correct angle. \n");
+    end
+else %This else means the volocity is not in range
+    if theta >= 30 & theta <= 60 %Checks if angle is withing range 
+        fprintf("The velocity is not within the specified range of [9.5,13.25] meters per second, please enter a correct velocity. \n")
+    
+    else % means that none of the inputs are valid
+        fprintf("None of the inputs are withing the specified range (velocity in range [9.5,13.25] and angle in range [30,60]).\n")
+
+    end
+end
+return
+%% ____________________
+%% RESULTS
+%TEST CASE 1
+%A10Prob1_baler_moral137(15,35)
+%The velocity is not within the specified range of [9.5,13.25] meters per second, please enter a correct velocity. 
+%
+%TEST CASE 2
+%A10Prob1_baler_moral137(10,65)
+%The angle is not within the specified range of [30,60] degrees, please enter a correct angle. 
+%
+%TEST CASE 3
+%[x y] = A10Prob1_baler_moral137(11.4,45);
+%The maximum height for the given system is 4.57 meters. 
+%The horizontal displacement at such height is 6.63 meters. 
+
+
+%% ____________________
+%% ACADEMIC INTEGRITY STATEMENT
+% I have not used source code obtained from any other unauthorized
+% source, either modified or unmodified.  Neither have I provided
+% access to my code to another. The function I am submitting
+% is my own original work.
+
+
+
